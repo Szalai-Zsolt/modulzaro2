@@ -9,6 +9,7 @@ public class Modulzaro2 {
 
     
     private static int[] sorozat;
+    private static int[][] matrix;
     private static int also=0, felso=25;
     private static final Random rnd=new Random();
     private static final Scanner scr=new Scanner(System.in);
@@ -34,7 +35,13 @@ public class Modulzaro2 {
         eldontesMindBemutatasa();
         linKerBemutatasa();
     }
-
+    
+    private static void adatszerkezetTomb() {
+       
+       matrixBemutatas();
+       inverzMatrixBemutatas();
+ 
+    }
     private static void osszegzesBemutatasa() {
     
         konzolraIr("Összegzes Bemutatása: ");
@@ -94,6 +101,16 @@ public class Modulzaro2 {
         }else{
         konzolraIr("Nincs benne 13 szám.\n");
         }
+    }
+
+    private static void matrixBemutatas() {
+        konzolraIr("Kétdimenziós mátrix feltöltése és kiiratása: \n");
+        tombKiir(feltoltMatrix(4, 4));
+    }
+
+    private static void inverzMatrixBemutatas() {
+        konzolraIr("Kétdimenziós mátrix inverz feltöltése és kiiratása: \n");
+        tombKiir(feltoltMatrixInverz(4, 4));
     }
 
     private static int osszegzes() {
@@ -179,9 +196,7 @@ public class Modulzaro2 {
         }
      }
 
-    private static void adatszerkezetTomb() {
-       
-    }
+   
     
     private static boolean tokeletesE(int szam) {
         int osszeg = megszamlalas();
@@ -217,6 +232,43 @@ public class Modulzaro2 {
      private static void konzolraIr(String kimenet) {
         System.out.println(kimenet);    
     }
+
+    private static int[][] feltoltMatrix(int sor, int oszlop) {
+       matrix = new int[sor][oszlop];
+       for(int i=0; i<sor; i++){
+           for(int j=0; j<oszlop; j++){
+               if(i==j){
+                   matrix[i][j]=velSzam(also, felso);
+               }
+           }
+       }
+       return matrix;
+    }
+    
+    private static int[][] feltoltMatrixInverz(int sor, int oszlop) {
+       matrix = new int[sor][oszlop];
+       for(int i=0; i<sor; i++){
+           for(int j=0; j<oszlop; j++){
+               if(i!=j){
+                   matrix[i][j]=velSzam(also, felso);
+               }else{
+                   matrix[i][j]=0;
+               }
+           }
+       }
+       return matrix;
+    }
+    private static void tombKiir(int[][] matrix) {
+        int sorDb = matrix.length;
+        for (int sor = 0; sor < sorDb; sor++) {
+            for (int oszlop = 0; oszlop <  matrix[sor].length; oszlop++) {
+                     System.out.print(matrix[sor][oszlop] + " ");
+            }
+            System.out.println("");
+        }
+        System.out.println("");
+    }
+
 
     
 }
