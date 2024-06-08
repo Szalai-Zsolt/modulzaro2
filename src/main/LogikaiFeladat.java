@@ -15,8 +15,8 @@ public class LogikaiFeladat {
     private static void jatek() {
         feltoltes();
         tombKiir();
-        xLep();
-        tombKiir();
+       
+        lepesek();
     }
 
    
@@ -62,14 +62,34 @@ public class LogikaiFeladat {
 
     private static void xLep() {
         
+        
         if(" ".equals(palya[keresesX()+1])){
             palya[keresesX()]=" ";
-            palya[keresesX()+1]="X";
+            palya[(keresesX()+2)]="X";
         } else if(" ".equals(palya[keresesX()+2])){
             palya[keresesX()]=" ";
-            //palya[keresesX()+2]="X";
+            palya[keresesX()+3]="X";
+        
+        }
+    }
+    private static void oLep() {
+        
+        if(" ".equals(palya[keresesO()-1])){
+            palya[keresesO()]=" ";
+            palya[(keresesO()-2)]="O";
+        } else if(" ".equals(palya[keresesO()-2])){
+            palya[keresesO()]=" ";
+            palya[keresesO()-3]="O";
         
         }
     }
 
+    private static void lepesek() {
+        for (int i=0; i<2; i++) {
+            
+        xLep();
+        tombKiir();
+        oLep();
+        tombKiir();}
+        }
 }
