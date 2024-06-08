@@ -12,7 +12,7 @@ public class Modulzaro2 {
     private static int[][] matrix;
     private static int also=0, felso=25;
     private static final Random rnd=new Random();
-    private static final Scanner scr=new Scanner(System.in);
+
     
      public static void main(String[] args) {
        modulzaro2();
